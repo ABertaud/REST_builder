@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <h1>REST Builder's Form</h1>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script language="JavaScript" src="form.js"></script>
+    <link rel="stylesheet" href="form.css">
+    <body>
+        <form class="form-horizontal">
+            <!-- Project's Name-->
+            <div id="items" class="form-group">
+                <label class="col-md-4 control-label" for="project_name">Project Name</label>
+                <div class="col-md-3 margin-bottom">
+                    <input type="project_name" class="form-control" id="projectName" placeholder="Enter the name of your project">
+                </div>
+            </div>
+            <!-- Application's name-->
+            <div id="items" class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Application Name</label>
+                <div class="col-md-3 margin-bottom">
+                    <input type="application_name" class="form-control" id="applicationName" placeholder="Enter the name of your application">
+                </div>
+            </div>
+            <!-- Models-->
+            <div id="itemsModel">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Model Name</label>
+                <div class="col-md-3 margin-bottom">
+                    <input type="model_name" class="form-control" id="modelName" placeholder="Enter the name of your model">
+                </div>
+                <div class="itemsField" id="itemsField1">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="textinput">Field Name</label>
+                        <div class="col-md-2 margin-bottom">
+                            <input type="field_name" class="form-control" id="fieldName" placeholder="Enter the name of your field">
+                            <select class="form-select" id="form-select1" aria-label="Default select example">
+                                <option selected>AutoField</option>
+                                <option value="1">BigAutoField</option>
+                                <option value="2">BigIntegerField</option>
+                                <option value="3">BinaryField</option>
+                                <option value="4">BooleanField</option>
+                                <option value="5">CharField</option>
+                                <option value="6">DateField</option>
+                                <option value="7">DateTimeField</option>
+                                <option value="8">DecimalField</option>
+                                <option value="9">DurationField</option>
+                                <option value="10">EmailField</option>
+                                <option value="11">FileField</option>
+                                <option value="12">FilePathField</option>
+                                <option value="13">FloatField</option>
+                                <option value="14">ImageField</option>
+                                <option value="15">IntegerField</option>
+                                <option value="16">IPAddressField</option>
+                                <option value="17">GenericIPAddressField</option>
+                                <option value="18">NullBooleanField</option>
+                                <option value="19">PositiveIntegerField</option>
+                                <option value="20">PositiveSmallIntegerField</option>
+                                <option value="21">SlugField</option>
+                                <option value="22">SmallIntegerField</option>
+                                <option value="23">TextField</option>
+                                <option value="24">TimeField</option>
+                                <option value="25">URLField</option>
+                                <option value="26">UUIDField</option>
+                                <option value="27">ForeignKey</option>
+                                <option value="28">OneToOneField</option>
+                                <option value="29">ManyToManyField</option>
+                                <option value="30">ManyToOneField</option>
+                                <option value="31">OneToManyField</option>
+                               </select>
+                               <input type="field_option" class="form-control" id="fieldOption1" placeholder="Enter the name of your foreign key">
+                        </div>
+                    </div>
+                </div>
+                <div class="edit-btn">
+                    <i id="add_field1" class="addField bi bi-plus-circle-fill"></i>
+                    <i id="remove_field1" class="removeField bi bi-file-minus-fill"></i>
+                </div>
+            </div>
+            </div>
+            <div class="edit-btn">
+                <i id="add_model" class="bi bi-plus-circle-fill"></i>
+                <i id="remove_model" class="bi bi-file-minus-fill"></i>
+            </div>
+            </br>
+            <div class="submit_btn">
+                <input type="submit" class="btn btn-info" value="Generate REST API">
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+#add_model, #remove_model {
+    font-size: 30px;
+}
+
+#add_field, #remove_field {
+    font-size: 20px;
+}
+
+/* #itemsField {
+    margin-top: 2.5%;
+    margin-left: 25%;
+} */
+
+.bi-plus-circle-fill {
+    color: #76ff7a;
+}
+.bi-file-minus-fill {
+    color: #ff004f;   
+}
+
+body {
+    color: white;
+    background-color: #2f4f4f;
+} 
+
+.submit_btn{
+    text-align: center;
+    margin-top: auto;
+}
+
+.edit-btn {
+    text-align: center;
+}
+

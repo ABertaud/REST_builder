@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     var modelCpt = 1;
     var fieldCpt = 1;
     
@@ -134,12 +133,27 @@ $(document).ready(function() {
 		//get the id of the element
 		var id = $(this).attr('id'); //get the id of the element
 		id = id.substring(id.length - 1); //get the last digit
-        if(parseInt($(this).val()) >= 27) {
+        if (parseInt($(this).val()) >= 27)
             $('#fieldOption' + id).show(); 
-        } else {
+        else
            	$('#fieldOption' + id).hide();
-        } 
 	});
+
+	
+	$("form").submit(function (event) {
+		console.log($(this));
+		// $.ajax({
+		// 	async: true,
+		// 	type: "POST",
+		// 	url: "http://localhost:8000/buildRestApi/",
+		// 	data: JSON.stringify(formDataObj),
+		// 	dataType: "json",
+		// 	encode: true,
+		// }).done(function (data) {
+		//   	console.log(data);
+		// });
+		event.preventDefault();
+	  });
 });
 
   

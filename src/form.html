@@ -13,14 +13,14 @@
             <div id="items" class="form-group">
                 <label class="col-md-4 control-label" for="project_name">Project Name</label>
                 <div class="col-md-3 margin-bottom">
-                    <input type="project_name" class="form-control" id="projectName" placeholder="Enter the name of your project">
+                    <input type="project_name" class="form-control" name="projectName" id="projectName" placeholder="Enter the name of your project">
                 </div>
             </div>
             <!-- Application's name-->
             <div id="items" class="form-group">
                 <label class="col-md-4 control-label" for="textinput">Application Name</label>
                 <div class="col-md-3 margin-bottom">
-                    <input type="application_name" class="form-control" id="applicationName" placeholder="Enter the name of your application">
+                    <input type="application_name" class="form-control" name="applicationName" id="applicationName" placeholder="Enter the name of your application">
                 </div>
             </div>
             <!-- Models-->
@@ -28,15 +28,15 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="textinput">Model Name</label>
                 <div class="col-md-3 margin-bottom">
-                    <input type="model_name" class="form-control" id="modelName" placeholder="Enter the name of your model">
+                    <input type="model_name" class="form-control" name="modelName" id="modelName" placeholder="Enter the name of your model">
                 </div>
                 <div class="itemsField" id="itemsField1">
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="textinput">Field Name</label>
                         <div class="col-md-2 margin-bottom">
-                            <input type="field_name" class="form-control" id="fieldName" placeholder="Enter the name of your field">
-                            <select class="form-select" id="form-select1" aria-label="Default select example">
-                                <option selected>AutoField</option>
+                            <input type="field_name" class="form-control" name="fieldName" id="fieldName" placeholder="Enter the name of your field">
+                            <select type="form_select" class="form-select" name="fieldSelected" id="form-select1" aria-label="Default select example">
+                                <option value="0" selected>AutoField</option>
                                 <option value="1">BigAutoField</option>
                                 <option value="2">BigIntegerField</option>
                                 <option value="3">BinaryField</option>
@@ -69,7 +69,7 @@
                                 <option value="30">ManyToOneField</option>
                                 <option value="31">OneToManyField</option>
                                </select>
-                               <input type="field_option" class="form-control" id="fieldOption1" placeholder="Enter the name of your foreign key">
+                               <input type="field_option" class="form-control" name="fieldOption" id="fieldOption1" placeholder="Enter the name of your foreign key">
                         </div>
                     </div>
                 </div>

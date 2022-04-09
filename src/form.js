@@ -13,14 +13,14 @@ $(document).ready(function() {
         '<div class="form-group next-model">\
 	<label class="col-md-4 control-label" for="textinput">Model Name</label>\
 	<div class="col-md-3 margin-bottom">\
-		<input type="model_name" class="form-control" id="modelName" placeholder="Enter the name of your model">\
+		<input type="model_name" class="form-control" name="modelName" id="modelName" placeholder="Enter the name of your model">\
 	</div>\
 	<div id="itemsField' + modelCpt.toString() +'">\
 		<div class="form-group">\
 			<label class="col-md-2 control-label" for="textinput">Field Name</label>\
 			<div class="col-md-2 margin-bottom">\
-				<input type="field_name" class="form-control" id="fieldName" placeholder="Enter the name of your field">\
-				<select class="form-select" id="form-select1" aria-label="Default select example">\
+				<input type="field_name" class="form-control" name="fieldName" id="fieldName" placeholder="Enter the name of your field">\
+				<select class="form-select" name="fieldSelected" id="form-select1" aria-label="Default select example">\
 					<option selected>AutoField</option>\
 					<option value="1">BigAutoField</option>\
 					<option value="2">BigIntegerField</option>\
@@ -54,7 +54,7 @@ $(document).ready(function() {
 					<option value="30">ManyToOneField</option>\
 					<option value="31">OneToManyField</option>\
 				   </select>\
-				   <input type="field_option" class="form-control" id="fieldOption' + fieldCpt.toString() + '" placeholder="Enter the name of your foreign key">\
+				   <input type="field_option" class="form-control" name="fieldOption" id="fieldOption' + fieldCpt.toString() + '" placeholder="Enter the name of your foreign key">\
 			</div>\
 		</div>\
 	</div>\
@@ -81,8 +81,8 @@ $(document).ready(function() {
         '<div class="form-group next-field">\
 <label class="col-md-2 control-label" for="textinput">Field Name</label>\
 <div class="col-md-2 margin-bottom">\
-    <input type="field_name" class="form-control" id="fieldName" placeholder="Enter the name of your field">\
-    <select class="form-select" id="form-select' + fieldCpt + '" aria-label="Default select example">\
+    <input type="field_name" class="form-control" name="fieldName" id="fieldName" placeholder="Enter the name of your field">\
+    <select class="form-select" name="fieldSelected" id="form-select' + fieldCpt + '" aria-label="Default select example">\
         <option selected>AutoField</option>\
         <option value="1">BigAutoField</option>\
         <option value="2">BigIntegerField</option>\
@@ -116,7 +116,7 @@ $(document).ready(function() {
         <option value="30">ManyToOneField</option>\
         <option value="31">OneToManyField</option>\
        </select>\
-       <input type="field_option" class="form-control" id="fieldOption' + fieldCpt.toString() + '" placeholder="Enter the name of your foreign key">\
+       <input type="field_option" class="form-control" name="fieldOption" id="fieldOption' + fieldCpt.toString() + '" placeholder="Enter the name of your foreign key">\
 </div>\
 </div>'
       	);
@@ -140,18 +140,53 @@ $(document).ready(function() {
 	});
 
 	
+	function convertFormToJSON(form) {
+		var json = {};
+		var array = form[0].elements;
+		if (array.length <= 6)
+			return ({});
+		json[array[0].name] = array[0].value;
+		json[array[1].name] = array[1].value;
+		json["models"] = {};
+		var i = 2;
+		len = array.length;
+		while (i < len) {
+			if (!array[i].name)
+				i++;
+			else {
+				modelName = array[i].value;
+				json["models"][modelName] = {};
+				json["models"][modelName]["fields"] = {};
+				i += 1;
+				while (array[i].name == "fieldName") {
+					fieldName = array[i].value;
+					json["models"][modelName]["fields"][fieldName] = {};
+					i++;
+					selectedIndex = array[i].selectedIndex;
+					json["models"][modelName]["fields"][fieldName]["selectedOption"] = array[i].options[selectedIndex].text;
+					i++;
+					json["models"][modelName]["fields"][fieldName]["option"] = array[i].value;
+					i++;
+					if (i > len)
+						break;
+				}
+			}
+		}
+		return json;
+	}
+
 	$("form").submit(function (event) {
-		console.log($(this));
-		// $.ajax({
-		// 	async: true,
-		// 	type: "POST",
-		// 	url: "http://localhost:8000/buildRestApi/",
-		// 	data: JSON.stringify(formDataObj),
-		// 	dataType: "json",
-		// 	encode: true,
-		// }).done(function (data) {
-		//   	console.log(data);
-		// });
+		event.preventDefault();
+		$.ajax({
+			async: true,
+			type: "POST",
+			url: "http://localhost:8000/buildRestApi/",
+			data: convertFormToJSON($(this)),
+			dataType: "json",
+			encode: true,
+		}).done(function (data) {
+		  	console.log(data);
+		});
 		event.preventDefault();
 	  });
 });
